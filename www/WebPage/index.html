@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="page1">
+
+
+    <!-- First Page Starts Here -->
+    <div data-role="header">
+        <h1>Index 2</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+
+
+<!-- navigation -->
+<fieldset class="ui-grid-b">
+    <div class="ui-block-a"><a href="#page1" data-transition="slide"><input type="button" value="Home"></a></div>
+    <div class="ui-block-b"><a href="#page2" data-transition="slideup"><input type="reset" value="Cars "></a></div>
+    <div class="ui-block-c"><a href="#page3" data-transition="turn"><input type="submit" value="Dealer Ship"></a></div>
+</fieldset>
+
+<!-- navigation -->
+
+
+
+
+        <div class="ui-grid-a">
+            <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:160px"><image src="model.webp" style="width:100%"></image>Shoes</div></div>
+            <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:160px"><image src="model.webp" style="width:100%"></image>Shirts</div></div>
+        </div><!-- /grid-a -->
+    </div><!-- /content -->
+
+
+
+          <div class="ui-body ui-body-a ui-corner-all">
+        <a href="#page4" class="ui-btn ui-btn-inline"> About Us</a>
+
+            </div>
+    
+
+
+    <div data-role="footer">
+        <h4>&copy; Eoin Curley Test Code</h4>
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+
+<!-- First Page ends Here -->
+
+
+<!-- Second Page Starts Here -->
+
+
+<div data-role="page" id="page2">
+
+
+
+    <div data-role="header">
+        <h1>My First Application</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+       
+<!-- navigation -->
+<fieldset class="ui-grid-b">
+    <div class="ui-block-a"><a href="#page1" data-transition="slide"><input type="button" value="Home"></a></div>
+    <div class="ui-block-b"><a href="#page2" data-transition="slideup"><input type="reset" value="Cars"></a></div>
+    <div class="ui-block-c"><a href="#page3" data-transition="slidedown"><input type="submit" value="Dealer Ship"></a></div>
+</fieldset>
+
+<!-- navigation -->
+
+
+<form class="ui-filterable">
+        <input id="filterBasic-input" data-type="search">
+    </form>
+    <ul data-role="listview" data-filter="true" data-input="#filterBasic-input">
+        <li>Acura</li>
+        <li>Audi</li>
+        <li>BMW</li>
+        <li>Cadillac</li>
+        <li>Ferrari</li>
+    </ul>
+
+
+<form>
+    <input data-type="search" id="searchForCollapsibleSet">
+<div data-role="collapsibleset" data-theme="b" data-content-theme="#b">
+        <div data-role="collapsible">
+            <h3>Audi</h3>
+            <ul data-role="listview" data-inset="true">
+        <li>Audi A1</li> <img src="pictures/AUDI PHOTOS/A1.webp" height="180" width="250"> <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+        <li>Audi A2</li> <img src="pictures/AUDI PHOTOS/A2.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+        <li>Audi A3</li> <img src="pictures/AUDI PHOTOS/A3.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+        <li>Audi A4</li> <img src="pictures/AUDI PHOTOS/A4.jfif" height="180" width="280">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+        <li>Audi A5</li> <img src="pictures/AUDI PHOTOS/A5.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+        <li>Audi A6</li> <img src="pictures/AUDI PHOTOS/A6.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+        <li>Audi A7</li> <img src="pictures/AUDI PHOTOS/A7.jpg" height="180" width="280">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+       
+        </div>
+
+
+        <div data-role="collapsible" data-theme="b" data-content-theme="#b">
+            <h3>Volkswagen</h3>
+            <ul data-role="listview" data-inset="true">
+                <li>VW MK5</li> <img src="pictures/VW PHOTOS/MK5.jfif" height="180" width="280">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+                <li>VW MK6</li> <img src="pictures/VW PHOTOS/MK6.jfif " height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+                <li>VW MK7</li> <img src="pictures/VW PHOTOS/MK7.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+                <li>VW MK8</li> <img src="pictures/VW PHOTOS/MK8.jpg" height="180" width="280">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+        </div>
+
+
+        <div data-role="collapsible">
+            <h3>Skoda</h3>
+            <ul data-role="listview" data-inset="true">
+                            <li>Octavia MK2</li> <img src="pictures/SKODA PHOTOS/MK2.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+                            <li>Octavia MK3</li> <img src="pictures/SKODA PHOTOS/MK3.jpeg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+
+                            <li>Octavia MK4</li> <img src="pictures/SKODA PHOTOS/MK4.jpg" height="180" width="300">  <a href="#page3" class="ui-btn ui-btn-inline">Nearest Dealership</a>
+        </div>
+    </div>
+
+
+
+
+
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4>&copy; Eoin Curley Test Code</h4>
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Second Page ends Here -->
+
+
+
+
+   <!-- Third Page Starts Here -->
+
+
+   <div data-role="page" id="page3">
+   <div data-role="header">
+    <h1>My First Application</h1>
+</div><!-- /header -->
+
+<div role="main" class="ui-content">
+   
+<!-- navigation -->
+<fieldset class="ui-grid-b">
+<div class="ui-block-a"><a href="#page1" data-transition="turn"><input type="button" value="Home"></a></div>
+<div class="ui-block-b"><a href="#page2" data-transition="slideup"><input type="reset" value="Cars"></a></div>
+<div class="ui-block-c"><a href="#page3" data-transition="slidedown"><input type="submit" value="Dealer Ship"></a></div>
+</fieldset>
+
+<!-- navigation -->
+
+
+
+
+
+<h3 class="ui-bar ui-bar-a ui-corner-all">Nearest Dealership</h3>
+<div class="ui-body ui-body-a ui-corner-all">
+    <p><image src=" " style="width:100%"></image></p>
+    <p> Map Input here </p>
+</div>
+
+
+
+</div><!-- /content -->
+
+<div data-role="footer">
+    <h4>&copy; Eoin Curley Test Code</h4>
+</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- third Page ends Here -->
+
+
+
+
+<div data-role="page" id="page4">
+
+
+    <!-- Fourth Page Starts Here -->
+    <div data-role="header">
+        <h1>My First Application</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+
+
+<!-- navigation -->
+<fieldset class="ui-grid-b">
+    <div class="ui-block-a"><a href="#page1" data-transition="slide"><input type="button" value="Home"></a></div>
+    <div class="ui-block-b"><a href="#page2" data-transition="slideup"><input type="reset" value="Cars"></a></div>
+    <div class="ui-block-c"><a href="#page3" data-transition="slidedown"><input type="submit" value="Dealer Ship"></a></div>
+</fieldset>
+
+<!-- navigation -->
+
+<p>
+<h3 class= "ui-bar ui-bar-a ui-bar-corner-all" id="gestureDiv1">
+Learn JQueryMoblie
+</h3>
+<h3 class= "ui-bar ui-bar-a ui-bar-corner-all" id="gestureDiv2">
+Build an App </h3>
+</p>
+
+<script>
+var myElement = document.getElementById("gestureDiv1");
+    var mc = new Hammer(myElement)
+    mc.on("swipeleft", function(ev) {
+        document.getElementById("gestureDiv1").style.display ="none"
+
+})
+
+var myElement = document.getElementById("gestureDiv2");
+    var mc = new Hammer(myElement)
+    mc.on("swiperight", function(ev) {
+        document.getElementById("gestureDiv2").style.display ="none"
+
+})
+
+</script>
+
+    <div data-role="footer">
+        <h4>&copy; Eoin Curley Test Code</h4>
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+
+<!-- First Page ends Here -->
+
+
+
+
+
+
+
+
+
+</body>
+</html>

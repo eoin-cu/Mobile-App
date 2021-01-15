@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<script type="text/javascript" src="cordova.js"></script>
+
+<script type="text/javascript" charset="utf-8">          
+    // Wait for device API libraries to load         
+    document.addEventListener("deviceready", onDeviceReady, false);      
+      // device APIs are available  
+  
+      function onDeviceReady() {         
+      // find all contacts with ' ' in any name field    ,If field is empty or full
+      var options = new ContactFindOptions();    
+      options.filter = "";   
+      options.multiple = true;
+      /*
+      Keyword search  
+      Name: "displayName"  ,
+      Phone number: " phoneNumbers" //ContactField[] 
+  
+      */  
+      var fields = ["displayName", "name", "phoneNumbers"];                
+      navigator.contacts.find(fields, onSuccess, onError, options);            } 
+      
+  
+      // onSuccess: Get a snapshot of the current contacts        
+      function onSuccess(contacts) {     
+  
+        // Contact and telephone number on here
+        var aResult = [];    
+  
+        for (var i = 0; contacts[i]; i++) {                    
+          console.log("Display Name = " + contacts[i].displayName); 
+  
+          if (contacts[i].phoneNumbers && contacts[i].phoneNumbers.length) {
+  
+            var contactPhoneList =[];
+  
+            for (var j = 0; contacts[i].phoneNumbers[j]; j++) {
+           // alert(contacts[i].phoneNumbers[j].type+"    "+contacts[i].displayName+"---------" + contacts[i].phoneNumbers[j].value );
+  
+           contactPhoneList.push(
+           { 
+            'type' :  contacts[i].phoneNumbers[j].type, 
+            'value' : contacts[i].phoneNumbers[j].value
+          }
+          );
+  
+         };        
+  
+         aResult.push({
+          name:contacts[i].displayName,
+          phone:contactPhoneList
+        });
+  
+       };
+          //
+        }
+  
+          //Iterative acquisition contacts and number
+      for (var i = 0; aResult[i]; i++) {
+        for (var j = 0 ; aResult[i].phone[j]; j++) {
+          //  document.getElementById('people').innerHTML = "Name: " + aResult[i].name + " Type: "+ aResult[i].phone[j].type+" Number: "+aResult[i].phone[j].value + "<br>"
+            
+        };
+  
+  
+      };
+    }   
+      // onError: Failed to get the contacts   
+      function onError(contactError) {                alert('onError!');            }   
+  
+      function baozi(){ alert("S1");}
+  
+      function intent() {       onDeviceReady();     }    
+  
+  
+    </script>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+    document.addEventListener("deviceready", function() {
+                    var deviceinfo = "cordova:" + device.cordova + "<br>Model:" + device.model + "<br>UUID:" + device.uuid + "<br>Platform:" + device.platform + "(" + device.version + ")";
+                    document.getElementById("deviceInfoText").innerHTML = deviceinfo;
+                }, false);
+    
+    
+    </script>
+
+<script>
+    window.onload=function()
+    {
+        document.getElementById('btnTakePicture').addEventListener('click', takePic);
+        document.getElementById('btnClear').addEventListener('click',function(){
+           document.getElementById('imgArea').src=""; 
+        });
+                                                             
+    }
+    
+    function takePic(e)
+    {
+        var options = {
+            quality: 80,
+            destinationType: Camera.DestinationType.FILE_URI,
+            encodingType: Camera.EncodingType.JPEG,
+            mediaType: Camera.MediaType.PICTURE,
+            targetWidth: 1200,
+            targetHeight: 800
+        }
+        navigator.camera.getPicture(success,fail, options);
+        
+    }
+        
+    function success(thePicture)
+    {
+        var image = document.getElementById('imgArea');
+        //alert(thePicture);
+        image.src = thePicture;
+        document.getElementById('btnTakePicture').style.display = none
+    }
+        
+    function fail(e)
+    {
+        alert("Image failed: " + e.message);
+    }
+    </script>
+
+
+
+
+<body>
+
+<div data-role="page" id="page1" style="background-color: black;">
+
+
+    <!-- First Page Starts Here -->
+	<div data-role="header">
+		<h1>My First Application</h1>
+    </div><!-- /header -->
+    
+
+
+	<div role="main" class="ui-content"><!-- /content -->
+
+
+<!-- navigation -->
+<fieldset class="ui-grid-b">
+    <div class="ui-block-a"><a href="#page1" style="text-decoration: none; " data-transition="slide"><input type="button" value="Home"></a></div>
+    <div class="ui-block-b"><a href="#page2" style="text-decoration: none;" data-transition="slideup"><input type="reset" value="Cars"></a></div>
+    <div class="ui-block-c"><a href="#page3" style="text-decoration: none;" data-transition="turn"><input type="submit" value="Dealer"></a></div>
+</fieldset>
+
+<!-- navigation -->
+
+
+
+
+    <div class="ui-grid-solo"> <!--solo grid-->
+        <div class="ui-block-a"><input type="button" value="RED ROCK MOTORS"> <image src="Pictures/Dealership Photos/Dealership logo.jpg" style="width:100%"></image> </div>
+    </div>
+
+        </div><!-- /content -->
+
+
+
+
+<!-- Link to gestures page -->
+<div class="ui-body ui-body-a ui-corner-all" style="background-color: black;">
+        <h3 class="ui-bar ui-bar-a ui-corner-all" id="loggedShow">Not logged In</h3>
+    <a href="#loginPage" class="ui-btn ui-shadow" data-transition="flip" id="x">Log-In</a>
+    <a href="#loginPage" class="ui-btn ui-shadow" data-transition="flip" id="y">Log Out</a>
+    <a href="#page4" class="ui-btn ui-shadow"  data-transition="flip">Trade in's</a>
+</div>
+<!-- Link to gestures page end-->
+
+
+<!-- Link to geolocation page -->
+<div class="ui-body ui-body-a ui-corner-all" style="background-color: black;">
+        <p id="arielphoto"><image src="Pictures/Dealership Photos/ariel dealership photo.jpg" style="width:100%"></image></p>
+    <a href="#page5" class="ui-btn ui-shadow" data-transition="turn">Find A Dealership</a>
+    
+</div>
+<!-- Link to geolocation page end-->
+
+<!-- Link to camera page -->
+<div class="ui-body ui-body-a ui-corner-all" style="background-color: black;">
+    <p id="photoicon"><image src="Pictures/Dealership Photos/photoicon.jpg" style="width:100%"></image></p>
+    <a href="#page6" class="ui-btn ui-shadow" data-transition="turn">Take A Picture</a>
+</div>
+<!-- Link to camera page end-->
+
+
+
+<div data-role="footer">
+    <h4>&copy; Eoin Curley </h4>
+</div><!-- /footer -->
+</div><!-- /page -->
+
+
+<!-- First Page ends Here -->
+
+
+
+
+
+
+
+
+
+<!-- Second Page Starts Here -->
+
+
+<div data-role="page" id="page2" style="background-color: red;">
+
+
+
+	<div data-role="header">
+		<h1>My First Application</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+       
+<!-- navigation -->
+<fieldset class="ui-grid-b">
+    <div class="ui-block-a"><a href="#page1" style="text-decoration: none;" data-transition="slide"><input type="button" value="Home"></a></div>
+    <div class="ui-block-b"><a href="#page2" style="text-decoration: none;" data-transition="slideup"><input type="reset" value="Cars"></a></div>
+    <div class="ui-block-c"><a href="#page3" style="text-decoration: none;" data-transition="slidedown"><input type="submit" value="Dealer"></a></div>
+</fieldset>
+
+<!-- navigation -->
+
+
+
+
+
+<form>
+    <input data-type="search" id="searchForCollapsibleSet">
+    <img src="Pictures/Dealership Photos/new vechicles.png" style="width: 100%;">
+<div data-role="collapsibleset" data-theme="b" data-content-theme="#b">
+        <div data-role="collapsible" style="background-color: black;">
+            <h3>Audi</h3>
+            <ul data-role="listview" data-inset="true">
+        <li>Audi A1</li> <img src="Pictures/AUDI PHOTOS/AUDI A1.jpg" height="180" width="250"> <a href="#page3" class="ui-btn ui-btn-inline"  data-transition="flip">Nearest Dealership</a>
+
+        <li>Audi A2</li> <img src="Pictures/AUDI PHOTOS/A2.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline"  data-transition="slidedown">Nearest Dealership</a>
+
+        <li>Audi A3</li> <img src="Pictures/AUDI PHOTOS/A3.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline"  data-transition="slideup">Nearest Dealership</a>
+
+        <li>Audi A4</li> <img src="Pictures/AUDI PHOTOS/A4.jfif" height="180" width="280">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="turn">Nearest Dealership</a>
+
+        <li>Audi A5</li> <img src="Pictures/AUDI PHOTOS/A5.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="slideright">Nearest Dealership</a>
+
+        <li>Audi A6</li> <img src="Pictures/AUDI PHOTOS/A6.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="pop">Nearest Dealership</a>
+
+        <li>Audi A7</li> <img src="Pictures/AUDI PHOTOS/A7.jpg" height="180" width="280">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="slidedown">Nearest Dealership</a>
+       
+        </div>
+
+
+        <div data-role="collapsible" data-theme="b" data-content-theme="#b" style="background-color: black;">
+            <h3>Volkswagen Golf</h3>
+            <ul data-role="listview" data-inset="true">
+                <li>VW Golf MK5</li> <img src="Pictures/VW PHOTOS/MK5.jfif" height="180" width="280">  <a href="#page3" class="ui-btn ui-btn-inline"  data-transition="flip">Nearest Dealership</a>
+
+                <li>VW Golf MK6</li> <img src="Pictures/VW PHOTOS/MK6.jfif " height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="slidedown">Nearest Dealership</a>
+
+                <li>VW Golf MK7</li> <img src="Pictures/VW PHOTOS/MK7.jpg" height="180" width="250">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="pop">Nearest Dealership</a>
+
+                <li>VW Golf MK8</li> <img src="Pictures/VW PHOTOS/MK8.png" height="180" width="280">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="flip">Nearest Dealership</a>
+        </div>
+
+
+        <div data-role="collapsible" style="background-color: black;">
+            <h3>Skoda Octavia</h3>
+            <ul data-role="listview" data-inset="true">
+                            <li>Octavia MK2</li> <img src="Pictures/SKODA PHOTOS/MK2.jpg" height="210" width="280">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="slideup">Nearest Dealership</a>
+
+                            <li>Octavia MK3</li> <img src="Pictures/SKODA PHOTOS/MK3.jpeg" height="210" width="280">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="slidedown">Nearest Dealership</a>
+
+                            <li>Octavia MK4</li> <img src="Pictures/SKODA PHOTOS/MK4.jpg" height="210" width="300">  <a href="#page3" class="ui-btn ui-btn-inline" data-transition="slideright">Nearest Dealership</a>
+        </div>
+    </div>
+
+
+
+
+
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4>&copy; Eoin Curley </h4>
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Second Page ends Here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- Third Page Starts Here -->
+
+
+   <div data-role="page" id="page3">
+   <div data-role="header">
+    <h1>My First Application</h1>
+</div><!-- /header -->
+
+<div role="main" class="ui-content"  style="background-color: black;">
+   
+<!-- navigation -->
+<fieldset class="ui-grid-b">
+<div class="ui-block-a"><a href="#page1" style="text-decoration: none;" data-transition="pop"><input type="button" value="Home"></a></div>
+<div class="ui-block-b"><a href="#page2" style="text-decoration: none;" data-transition="flip"><input type="reset" value="Cars"></a></div>
+<div class="ui-block-c"><a href="#page3" style="text-decoration: none;" data-transition="flow"><input type="submit" value="Dealer"></a></div>
+</fieldset>
+
+<!-- navigation -->
+
+
+
+
+
+<h3 class="ui-bar ui-bar-a ui-corner-all">Nearest Dealership</h3>
+
+<!-- Link to geolocation page -->
+<div class="ui-body ui-body-a ui-corner-all" style="background-color: rgb(250, 212, 0);">
+    <img src="Pictures/Dealership Photos/multiple signs.jpg" style="width: 100%;">
+    <a href="#page5" class="ui-btn ui-shadow" data-transition="turn">Find A Dealership</a>
+</div>
+<!-- Link to geolocation page end-->
+
+
+
+</div><!-- /content -->
+
+<div data-role="footer">
+    <h4>&copy; Eoin Curley</h4>
+</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- third Page ends Here -->
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- fourth Page Starts Here -->
+
+
+ <div data-role="page" id="page4" style="background-color: red;">
+    <div data-role="header">
+     <h1>My First Application</h1>
+ </div><!-- /header -->
+ 
+ <div role="main" class="ui-content">
+    
+ <!-- navigation -->
+ <fieldset class="ui-grid-b">
+ <div class="ui-block-a"><a href="#page1" style="text-decoration: none;" data-transition="pop"><input type="button" value="Home"></a></div>
+ <div class="ui-block-b"><a href="#page2" style="text-decoration: none;" data-transition="flip"><input type="reset" value="Cars"></a></div>
+ <div class="ui-block-c"><a href="#page3" style="text-decoration: none;" data-transition="flow"><input type="submit" value="Dealer"></a></div>
+ </fieldset>
+ 
+ <!-- navigation -->
+ 
+ 
+ 
+ 
+ 
+ <h3 class="ui-bar ui-bar-a ui-corner-all"> About Trade In's</h3>
+ <div class="ui-body ui-body-a ui-corner-all" style="background-color: black;">
+     <p><image src="Pictures/Dealership Photos/tradeInPhoto.jpg" style="width: 100%"></image></p>
+     <p >
+        <h3 class="ui-bar ui-bar-a ui-corner-all" id="gestureDiv1">Trade in's accepted: Car's from 2009-2020.</h3>
+        <h3 class="ui-bar ui-bar-a ui-corner-all" id="gestureDiv2">A Driver will test drive your car and give you a fair price on condition of your car.</h3>
+        <h3 class="ui-bar ui-bar-a ui-corner-all" id="gestureDiv3">No NCT? No problem, we can book your Car For NCT. After it your car passes NCT we can accept it as a trade in.</h3>
+
+
+        
+
+        <script>
+                  var myElement = document.getElementById('gestureDiv1');
+                  var mc = new Hammer(myElement);
+                  mc.on("swipeleft", function(ev) {
+                      document.getElementById('gestureDiv1').style.display = "none";
+                      alert("I hope you know what you are doing?")
+                  });
+                  
+                  
+                  
+                  var myElement2 = document.getElementById('gestureDiv2');
+                  var mc2 = new Hammer(myElement2);
+                  mc2.on("swiperight", function(ev) {
+                      document.getElementById('gestureDiv2').style.display = "none";
+                      alert("Hope You Kept The Car In Good Condition.")
+                  });
+
+                  var myElement3 = document.getElementById('gestureDiv3');
+                  var mc2 = new Hammer(myElement3);
+                  mc2.on("swipeleft", function(ev) {
+                      document.getElementById('gestureDiv3').style.display = "none";
+                      alert("Anything Else We Should Know About?")
+                  });
+             
+          
+
+             
+          
+
+// Pinch Script Start-->
+
+    var myElement3 = document.getElementById('gestureDiv3');
+        var mc3 = new Hammer.Manager(myElement3);
+           // call the pinch from the Hammer library
+            var pinch = new Hammer.Pinch();
+           
+            // add to the Manager
+            mc3.add([pinch]);
+            // now the function will work.
+
+mc3.on("pinch rotate", function(ev) {
+document.getElementById('gestureDiv3').style.display = "none";
+alert("car Booked for Monday 8:00 p.m.")
+});
+// Pinch Script End-->
+    
+    </script>
+
+
+
+
+
+     </p>
+ </div>
+ 
+ 
+ 
+ </div><!-- /content -->
+ 
+ <div data-role="footer">
+     <h4>&copy;Eoin Curley</h4>
+ </div><!-- /footer -->
+ </div><!-- /page -->
+ 
+ <!-- fourth Page ends Here -->
+
+
+
+
+
+ <!-- Fifth Page Starts Here -->
+
+
+ <div data-role="page" id="page5">
+    <div data-role="header">
+     <h1>My First Application</h1>
+ </div><!-- /header -->
+ 
+ <div role="main" class="ui-content"  style="background-color: rgb(0, 0, 0);">
+    
+ <!-- navigation -->
+ <fieldset class="ui-grid-b">
+ <div class="ui-block-a"><a href="#page1" style="text-decoration: none;" data-transition="pop"><input type="button" value="Home"></a></div>
+ <div class="ui-block-b"><a href="#page2" style="text-decoration: none;" data-transition="flip"><input type="reset" value="Cars"></a></div>
+ <div class="ui-block-c"><a href="#page3" style="text-decoration: none;" data-transition="flow"><input type="submit" value="Dealer"></a></div>
+ </fieldset>
+ 
+ <!-- navigation -->
+ 
+ 
+ 
+ 
+ 
+ <h3 class="ui-bar ui-bar-a ui-corner-all">Dealer</h3>
+ <div class="ui-body ui-body-a ui-corner-all" style="background-color:rgb(250, 212, 0)">
+     <p id="mapholder"><image src="Pictures/Dealership Photos/ariel dealership photo.jpg" style="width:100%"></image></p>
+     <button onclick="getLocation()">Find Me A Dealership</button>
+    
+        <p id="atms"></p>  
+ 
+ 
+ </div>
+ 
+ 
+ 
+ </div><!-- /content -->
+ 
+ <div data-role="footer">
+     <h4>&copy; Eoin Curley</h4>
+ </div><!-- /footer -->
+ </div><!-- /page -->
+ 
+ <!-- fifth Page ends Here -->
+ 
+ <div data-role="page" id="page6">
+
+
+    <!-- First Page Starts Here -->
+	<div data-role="header">
+		<h1>My First Application</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content" style="background-color: royalblue;">
+
+
+<!-- navigation -->
+<fieldset class="ui-grid-b">
+    <div class="ui-block-a"><a href="#page1" style="text-decoration: none; " data-transition="flip"><input type="button" value="Home"></a></div>
+    <div class="ui-block-b"><a href="#page2" style="text-decoration: none;" data-transition="slideup"><input type="reset" value="Cars"></a></div>
+    <div class="ui-block-c"><a href="#page3" style="text-decoration: none;" data-transition="slidefade"><input type="submit" value="Dealer"></a></div>
+</fieldset>
+
+<!-- navigation -->
+
+<center>        
+    <h3 class="ui-bar ui-bar-a ui-corner-all">Use The Camera To Take A Picture Of Your Car</h3>
+</center>
+
+
+      
+
+
+<!-- Link to geolocation page -->
+<div class="ui-body ui-body-a ui-corner-all" style="background-color: thistle;">
+    
+    <p><img id="imgArea" style="width:50%;"/>
+    <center> 
+        <img src="Pictures/Dealership Photos/google-pin.png" style="width: 100%;">
+        Your picture will appear here.</p>
+    </center>
+    <button style="font-size:24px" id="btnTakePicture">Say Cheese! <i class="fa fa-camera-retro"></i></button>
+    <button style="font-size:24px" id="btnClear">Submit Picture <i class="fa fa-camera-retro"></i></button>
+    
+
+</div>
+<!-- Link to geolocation page end-->
+    
+	<div data-role="footer">
+        <h4>&copy; Eoin Curley</h4>
+        
+        
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+</div>
+
+
+
+ <script>
+
+    var x = document.getElementById("demoddd");
+    
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+    
+    function showPosition(position) {
+        var latlon = position.coords.latitude + "," + position.coords.longitude;
+        var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+        +latlon+"&zoom=14&size=400x300&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
+        document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"' width='100%'>";
+        document.getElementById("atms").innerHTML =  "Turn left at the next junction and the nearest RED ROCK Dealership will be on your right."
+    }
+    //To use this code on your website, get a free API key from Google.
+    //Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+    
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+    </script>
+
+<!-- Second Page Starts Here -->
+
+
+<div data-role="page" id="loginPage" style="background-color: rgb(250, 212, 0);">
+
+
+
+        <div data-role="header">
+            <h1>My First Application</h1>
+        </div><!-- /header -->
+    
+        <div role="main" class="ui-content">
+           
+    <!-- navigation -->
+    <fieldset class="ui-grid-b">
+        <div class="ui-block-a"><a href="#page1" style="text-decoration: none;" data-transition="slideup"><input type="button" value="Home" ></a></div>
+        <div class="ui-block-b"><a href="#page2" style="text-decoration: none;" data-transition="slidedown"><input type="reset" value="Cars" ></a></div>
+        <div class="ui-block-c"><a href="#page3" style="text-decoration: none;" data-transition="slideleft"><input type="submit" value="Dealer"></a></div>
+    </fieldset>
+    
+    <!-- navigation -->
+    
+    
+    
+    
+    
+            <form>
+                <input data-type="text" id="username" placeholder="Username">
+               
+                <button id="login" onclick="logIn()">LogIn</button>
+                <button id="logout" onclick="logOut()">LogOut</button>
+              
+            </form>
+    
+    <script>
+    
+    function logIn() {
+        if (typeof(Storage) !== "undefined") {
+        // Store
+        var who = document.getElementById("username").value
+        localStorage.setItem("username", who);
+        localStorage.setItem("in", 1);
+        // Retrieve
+       //document.getElementById("logged").innerHTML = "Welcome back " + localStorage.getItem("username");
+        document.location.reload(true)
+       // document.getElementById("login").style.display = "none"
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+    }
+    
+    function logOut(){
+    
+         localStorage.removeItem("username");
+         localStorage.setItem("in", 2);
+         imOut()
+     }
+    
+    </script>
+    
+        </div><!-- /content -->
+    
+        <div data-role="footer" class="fixed">
+            <h4>&copy; Eoin Curley</h4>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+    
+    <!-- Second Page ends Here -->
+
+    <script>
+
+            function imIn(){
+              var xyz =  localStorage.getItem("in")
+             
+        
+        if(xyz==1){
+            document.getElementById("loggedShow").innerHTML = "Logged in as: " + localStorage.getItem("username");
+                window.location.href = "#page1";
+                document.getElementById("login").style.display = "none"
+                
+                document.getElementById("x").style.display = "none"
+                document.getElementById("y").style.display = "block"
+        }
+        
+        else {
+        
+            document.getElementById("loggedShow").innerHTML = "Not Yet Logged In"  ;
+            document.getElementById("y").style.display = "none"
+            document.getElementById("logout").style.display = "none"
+        }
+        
+            }
+        
+            function imOut(){
+                document.getElementById("login").style.display = "block"
+                document.getElementById("logout").style.display = "none"
+                document.getElementById("y").style.display = "none"
+                document.getElementById("x").style.display = "block"
+        document.getElementById("loggedShow").innerHTML = "Not Logged in" 
+        window.location.href = "#page1";
+        }
+        
+        
+        imIn()
+        
+        </script>
+        
+
+
+</body>
+
+</html>
